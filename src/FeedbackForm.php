@@ -7,8 +7,10 @@ namespace App;
  */
 class FeedbackForm
 {
+    CONST ID = 'feedback';
+
     private $data;
-    public $errors;
+    public $errors = [];
 
     /**
      * Load data
@@ -24,10 +26,15 @@ class FeedbackForm
     public function validate(): bool
     {
         $data = $this->data;
+        $form = $data['form'] ?? null;
         $token = $data['token'] ?? null;
         $name = $data['name'] ?? '';
         $email = $data['email'] ?? '';
         $text = $data['text'] ?? '';
+
+        if( $form !== self::ID ) {
+            $this->errors[] = 'Wrong form';
+        }
 
         if( !Csrf::validate($token) ) {
             $this->errors[] = 'Wrong token';
@@ -38,7 +45,7 @@ class FeedbackForm
             $this->errors[] = "Wrong name";
         }
 
-        if ( filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+        if ( !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
             $this->errors[] = "Wrong email";
         }
 
