@@ -3,17 +3,12 @@
 namespace App;
 
 /**
- * Feedback
+ * Feedback form
  */
 class FeedbackForm
 {
     private $data;
     public $errors;
-
-    /* public function __construct($data)
-    {
-        $this->data = $data;
-    } */
 
     /**
      * Load data
@@ -56,7 +51,7 @@ class FeedbackForm
     }
 
     /**
-     * Save 
+     * Save data
      * TODO: Do save 
      */
     public function save()
@@ -74,7 +69,7 @@ class FeedbackForm
     }
 
     /**
-     * Render 
+     * Render view
      */
     public function render()
     {

@@ -3,14 +3,14 @@
 namespace App;
 
 use App\FeedbackForm;
-use App\Csrf;
 
+/**
+ * App
+ */
 class App
 {
-    // private $errors = [];
-
     /**
-     * 
+     * Run app
      */
     public function run()
     {
@@ -31,7 +31,7 @@ class App
     }
 
     /**
-     * 
+     * Render view
      */
     private function render($success, $error, $form)
     {
@@ -39,7 +39,7 @@ class App
     }
 
     /**
-     * Is post
+     * Check is post
      * TODO:
      */
     private function isPost()
