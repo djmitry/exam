@@ -3,7 +3,7 @@
 /**
  * Feedback
  */
-class Feedback
+class FeedbackForm
 {
     /**
      * Validate input
