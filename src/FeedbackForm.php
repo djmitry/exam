@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 /**
  * Feedback
  */
@@ -38,5 +40,13 @@ class FeedbackForm
     public function save()
     {
         return true;
+    }
+
+    /**
+     * Render 
+     */
+    public static function render()
+    {
+        return '';
     }
 }

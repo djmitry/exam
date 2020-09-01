@@ -1,5 +1,10 @@
 <?php
 
+namespace App;
+
+/**
+ * 
+ */
 class Csrf
 {
     public function createToken(): string
