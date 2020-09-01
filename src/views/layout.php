@@ -1,6 +1,8 @@
 <?php
 
-use App\FeedbackForm;
+/* print_r($success);
+print_r($error); */
+// print_r($form->errors);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +12,14 @@ use App\FeedbackForm;
     <title>App</title>
 </head>
 <body>
-    <?= FeedbackForm::render() ?>
+    <?php if (!empty($success)) { ?>
+        <div class="alert alert-success"><?= $success ?></div>
+    <?php } ?>
+
+    <?php if (!empty($error)) { ?>
+        <div class="alert alert-danger"><?= $error ?></div>
+    <?php } ?>
+
+    <?= $form->render() ?>
 </body>
 </html>

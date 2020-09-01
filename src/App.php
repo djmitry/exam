@@ -14,22 +14,26 @@ class App
      */
     public function run()
     {
+        $success = '';
+        $error = '';
+        $form = new FeedbackForm();
+
         if ($this->isPost()) {
-            $form = new FeedbackForm($_POST);
+            $form->load($_POST);
             if ( $form->validate() && $form->save() ) {
-                $success[] = 'Form saved';
+                $success = 'Form saved';
             } else {
-                $errors[] = 'Wrong form data';
+                $error = 'Form not saved';
             }
         }
 
-        return $this->render();
+        return $this->render($success, $error, $form);
     }
 
     /**
      * 
      */
-    private function render()
+    private function render($success, $error, $form)
     {
         require_once __DIR__ . '/views/layout.php';
     }
