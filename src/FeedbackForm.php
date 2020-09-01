@@ -7,30 +7,41 @@ namespace App;
  */
 class FeedbackForm
 {
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
     /**
      * Validate input
      */
-    public function validate($data)
+    public function validate(): bool
     {
+        $data = $this->data;
+        $token = $data['token'] ?? null;
         $name = $data['name'] ?? '';
         $email = $data['email'] ?? '';
         $text = $data['text'] ?? '';
 
+        if( !Csrf::validate($token) ) {
+            $this->errors[] = 'Wrong token';
+        }
+
         $name = filter_var($name, FILTER_SANITIZE_STRING);
         if (!$name) {
-            $errors[] = "Wrong name";
+            $this->errors[] = "Wrong name";
         }
 
         if ( filter_var($email, FILTER_VALIDATE_EMAIL) ) {
-            $errors[] = "Wrong email";
+            $this->errors[] = "Wrong email";
         }
 
         $text = filter_var($text, FILTER_SANITIZE_STRING);
         if (!$text) {
-            $errors[] = "Wrong Text";
+            $this->errors[] = "Wrong Text";
         }
 
-        return $errors;
+        return (bool) count($this->errors);
     }
 
     /**
@@ -47,6 +58,6 @@ class FeedbackForm
      */
     public static function render()
     {
-        return '';
+        require_once __DIR__ . '/views/form.php';
     }
 }
