@@ -10,7 +10,7 @@ foreach($this->errors as $error) {
 ?>
 <form action="index.php" method="POST">
     <input type="hidden" name="form" value="feedback">
-    <input type="hidden" name="csrf_token" value="<?= Csrf::createToken() ?>">
+    <input type="hidden" name="csrf_token" value="<?= Csrf::create() ?>">
     <div>
         <input type="text" name="name" value="<?= $_POST['name'] ?? '' ?>">
     </div>

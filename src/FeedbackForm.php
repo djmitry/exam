@@ -35,7 +35,7 @@ class FeedbackForm
         if( $form !== self::ID ) {
             $this->errors[] = 'Wrong form';
         }
-
+        
         if( !Csrf::validate($token) ) {
             $this->errors[] = 'Wrong token';
         }

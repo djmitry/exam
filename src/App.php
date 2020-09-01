@@ -40,10 +40,9 @@ class App
 
     /**
      * Check is post
-     * TODO:
      */
     private function isPost()
     {
-        return true;
+        return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 }
