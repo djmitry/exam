@@ -7,7 +7,18 @@ namespace App;
  */
 class FeedbackForm
 {
-    public function __construct($data)
+    private $data;
+    public $errors;
+
+    /* public function __construct($data)
+    {
+        $this->data = $data;
+    } */
+
+    /**
+     * Load data
+     */
+    public function load($data): void
     {
         $this->data = $data;
     }
@@ -41,7 +52,7 @@ class FeedbackForm
             $this->errors[] = "Wrong Text";
         }
 
-        return (bool) count($this->errors);
+        return !count($this->errors);
     }
 
     /**
@@ -50,13 +61,22 @@ class FeedbackForm
      */
     public function save()
     {
+        
         return true;
+    }
+
+    /**
+     * Get errors 
+     */
+    public function getErrors()
+    {
+        return $this->errors;
     }
 
     /**
      * Render 
      */
-    public static function render()
+    public function render()
     {
         require_once __DIR__ . '/views/form.php';
     }

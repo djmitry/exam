@@ -1,6 +1,12 @@
 <?php
 
 use App\Csrf;
+
+foreach($this->errors as $error) {
+?>
+    <div class="alert alert-danger"><?= $error ?></div>
+<?php
+}
 ?>
 <form action="index.php" type="POST">
     <input type="hidden" name="csrf_token" value="<?= Csrf::createToken() ?>">
