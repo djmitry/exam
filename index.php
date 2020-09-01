@@ -2,7 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use App\FeedbackForm;
-use App\Csrf;
+use App\App;
 
-require_once __DIR__ . '/src/layout.php';
+$app = new App();
+$app->run();
