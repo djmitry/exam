@@ -1,6 +1,6 @@
 <?php
 
-use App\Csrf;
+use App\components\Csrf;
 
 ?>
 <div class="form-feedback">

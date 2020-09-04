@@ -3,7 +3,7 @@
 namespace App;
 
 use App\FeedbackForm;
-use App\Flash;
+use App\components\Flash;
 
 /**
  * App

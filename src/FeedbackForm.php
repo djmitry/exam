@@ -2,7 +2,8 @@
 
 namespace App;
 
-use App\DB;
+use App\components\DB;
+use App\components\Csrf;
 
 /**
  * Feedback form
