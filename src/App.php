@@ -30,7 +30,7 @@ class App
         if ($this->isPost()) {
             $form->load($_POST);
             if ( $form->validate() && $form->save() ) {
-                $this->flash->add('success', 'Form saved');
+                $this->flash->add('success', 'Спасибо, ' . $form->getData('name'));
                 $this->redirect('/');
             } else {
                 $this->flash->add('error', 'Form not saved');

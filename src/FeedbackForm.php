@@ -68,7 +68,7 @@ class FeedbackForm
     public function save(): bool
     {
         $this->data['created_at'] = date('Y-m-d H:i:s');
-        
+
         return Db::insert(self::ID, $this->data);
     }
 
@@ -86,5 +86,13 @@ class FeedbackForm
     public function render(): void
     {
         require_once __DIR__ . '/views/form.php';
+    }
+
+    /**
+     * Get data
+     */
+    public function getData($name): ?string
+    {
+        return $this->data[$name] ?? null;
     }
 }
