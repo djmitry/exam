@@ -12,13 +12,13 @@ class Csrf
      */
     public static function create(): string
     {
-        $_SESSION['csrf_token'] = sha1(uniqid('app'));
-        return $_SESSION['csrf_token'];
+        $token = sha1(uniqid('app'));
+        $_SESSION['csrf_token'] = $token;
+        return $token;
     }
 
     /**
      * Validate
-     * FIXME: Not work
      */
     public static function validate($token): bool
     {

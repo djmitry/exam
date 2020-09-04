@@ -27,7 +27,7 @@ class FeedbackForm
     {
         $data = $this->data;
         $form = $data['form'] ?? null;
-        $token = $data['token'] ?? null;
+        $token = $data['csrf_token'] ?? null;
         $name = $data['name'] ?? '';
         $email = $data['email'] ?? '';
         $text = $data['text'] ?? '';
