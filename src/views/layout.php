@@ -1,8 +1,5 @@
 <?php
 
-/* print_r($success);
-print_r($error); */
-// print_r($form->errors);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,12 +9,12 @@ print_r($error); */
     <title>App</title>
 </head>
 <body>
-    <?php if (!empty($success)) { ?>
-        <div class="alert alert-success"><?= $success ?></div>
+    <?php if ($this->flash->has('success')) { ?>
+        <div class="alert alert-success"><?= $this->flash->get('success') ?></div>
     <?php } ?>
 
-    <?php if (!empty($error)) { ?>
-        <div class="alert alert-danger"><?= $error ?></div>
+    <?php if ($this->flash->has('error')) { ?>
+        <div class="alert alert-danger"><?= $this->flash->get('error') ?></div>
     <?php } ?>
 
     <?= $form->render() ?>

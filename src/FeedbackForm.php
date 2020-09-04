@@ -64,12 +64,11 @@ class FeedbackForm
 
     /**
      * Save data
-     * TODO: Do save 
      */
     public function save(): bool
     {
         $this->data['created_at'] = date('Y-m-d H:i:s');
-
+        
         return Db::insert(self::ID, $this->data);
     }
 
