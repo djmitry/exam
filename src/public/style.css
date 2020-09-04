@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font: 16px Tahoma;
+    padding: 2% 0 0;
+}
+input,
+textarea,
+button {
+    font: inherit;
+}
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.alert {
+    padding: 10px 15px;
+    margin: 0 0 15px;
+    color: black;
+}
+.alert-success {
+    background-color: #d4edda;
+}
+.alert-danger {
+    background-color: #f8d7da;
+}
+
+.form-feedback {
+    margin: 0;
+}
+.form-feedback .form-group {
+    margin: 0 0 20px;
+}
+.form-feedback input,
+.form-feedback textarea,
+.form-feedback button {
+    border: 1px solid gray;
+}
+.form-feedback input,
+.form-feedback textarea {
+    width: 100%;
+}
+.form-feedback input,
+.form-feedback button {
+    height: 40px;
+}
+.form-feedback input {
+    padding: 0 12px;
+}
+.form-feedback textarea {
+    padding: 8px 12px;
+}
+.form-feedback button {
+    margin: 0 auto;
+    display: block;
+    padding: 0 20px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
