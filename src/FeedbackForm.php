@@ -66,33 +66,17 @@ class FeedbackForm
      * Save data
      * TODO: Do save 
      */
-    public function save()
+    public function save(): bool
     {
-        // $this->data['created_at'] = date('Y-m-d H:i:s');
-        $data = [
-            'name' => 'Name', 
-            'email' => 'bb', 
-            'text' => 'dff', 
-            'created_at' => date('Y-m-d H:i:s'),
-        ];
+        $this->data['created_at'] = date('Y-m-d H:i:s');
 
-        // Db::insert('feeadback', $this->data);
-
-        $fields = "`" . implode('`,`', array_keys($data)) . "`";
-        $values = substr(str_repeat('?,', count($data)), 0, -1);
-        $params = array_values($data);
-
-        $sql = "INSERT INTO `" . $tablename . "` (" . $fields . ") VALUES(" . $values . ")";
-        $stm = Db::db()->prepare($sql);
-        $stm->execute($params);
-
-        return true;
+        return Db::insert(self::ID, $this->data);
     }
 
     /**
      * Get errors 
      */
-    public function getErrors()
+    public function getErrors(): array
     {
         return $this->errors;
     }
@@ -100,7 +84,7 @@ class FeedbackForm
     /**
      * Render view
      */
-    public function render()
+    public function render(): void
     {
         require_once __DIR__ . '/views/form.php';
     }
