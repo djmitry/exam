@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\FeedbackForm;
+use App\components\FeedbackForm;
 use App\components\Flash;
 
 /**
@@ -45,7 +45,7 @@ class App
      */
     private function render($form)
     {
-        require_once __DIR__ . '/views/layout.php';
+        require_once APP . '/views/layout.php';
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\components;
 
 use App\components\DB;
 use App\components\Csrf;
@@ -86,7 +86,7 @@ class FeedbackForm
      */
     public function render(): void
     {
-        require_once __DIR__ . '/views/form.php';
+        require_once APP . '/views/form.php';
     }
 
     /**
