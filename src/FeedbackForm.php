@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\DB;
+
 /**
  * Feedback form
  */
@@ -9,15 +11,16 @@ class FeedbackForm
 {
     CONST ID = 'feedback';
 
+    private $post;
     private $data;
     public $errors = [];
 
     /**
      * Load data
      */
-    public function load($data): void
+    public function load($post): void
     {
-        $this->data = $data;
+        $this->post = $post;
     }
 
     /**
@@ -25,12 +28,12 @@ class FeedbackForm
      */
     public function validate(): bool
     {
-        $data = $this->data;
-        $form = $data['form'] ?? null;
-        $token = $data['csrf_token'] ?? null;
-        $name = $data['name'] ?? '';
-        $email = $data['email'] ?? '';
-        $text = $data['text'] ?? '';
+        $post = $this->post;
+        $form = $post['form'] ?? null;
+        $token = $post['csrf_token'] ?? null;
+        $name = $post['name'] ?? '';
+        $email = $post['email'] ?? '';
+        $text = $post['text'] ?? '';
 
         if( $form !== self::ID ) {
             $this->errors[] = 'Wrong form';
@@ -54,6 +57,8 @@ class FeedbackForm
             $this->errors[] = "Wrong Text";
         }
 
+        $this->data = compact('name', 'email', 'text');
+
         return !count($this->errors);
     }
 
@@ -63,7 +68,24 @@ class FeedbackForm
      */
     public function save()
     {
-        
+        // $this->data['created_at'] = date('Y-m-d H:i:s');
+        $data = [
+            'name' => 'Name', 
+            'email' => 'bb', 
+            'text' => 'dff', 
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+
+        // Db::insert('feeadback', $this->data);
+
+        $fields = "`" . implode('`,`', array_keys($data)) . "`";
+        $values = substr(str_repeat('?,', count($data)), 0, -1);
+        $params = array_values($data);
+
+        $sql = "INSERT INTO `" . $tablename . "` (" . $fields . ") VALUES(" . $values . ")";
+        $stm = Db::db()->prepare($sql);
+        $stm->execute($params);
+
         return true;
     }
 
